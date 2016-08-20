@@ -22,12 +22,6 @@ grad = zeros(size(theta));
 
 J = (sum(-y.*(log(sigmoid((x*theta))))-(1-y).*(log(1-sigmoid(x*theta))))) / m;
 
-%for i = 1:m
- %   J = J - y(i)*log(sigmoid((x(i,:))*theta)) - (1-y(i))*log(1-sigmoid((x(i,:))*theta));
-%end
-
-%J = J / m;
-
 grad(1) = (sum((sigmoid(x*theta)-y).*(x(:,1)))) / m;
 grad(2) = (sum((sigmoid(x*theta)-y).*(x(:,2)))) / m;
 grad(3) = (sum((sigmoid(x*theta)-y).*(x(:,3)))) / m;
