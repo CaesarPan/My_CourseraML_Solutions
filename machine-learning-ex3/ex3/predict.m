@@ -21,33 +21,11 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
-
-
-%%% Map from Layer 1 to Layer 2
-% Coverts to matrix of 5000 examples x 26 thetas
-
-% Add ones to the X data matrix
-X = [ones(m, 1) X];
-
-z1=X*Theta1';
-% Sigmoid function converts to p between 0 to 1
-h1=sigmoid(z1);
-
-%%% Map from Layer to Layer 3
-% Add ones to the h1 data matrix
-h1=[ones(m, 1) h1];
-% Converts to matrix of 5000 exampls x num_labels 
-z2=h1*Theta2';
-% Sigmoid function converts to p between 0 to 1
-h2=sigmoid(z2);
-
-% pval returns the highest value in each row, while p returns the position in each row
-[pval, p]=max(h2,[],2);  
-
-
-
-
-
+a1 = [ones(m, 1) X];
+a2 = sigmoid(a1*Theta1');
+a2 = [ones(m, 1) a2];
+a3 = sigmoid(a2*Theta2');
+[pVal, p] = max(a3, [], 2);
 
 % =========================================================================
 
