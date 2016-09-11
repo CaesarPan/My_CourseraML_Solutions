@@ -82,8 +82,8 @@ tri_delta_2 = 0;
 delta3t = a3 - yMatrix;                  %5000*10
 delta2t = (delta3t*Theta2).*((sigmoidGradient([ones(1, size(z2, 2)); z2]))');    %5000*26
 delta2t_noBias = delta2t(:, 2:end);      %5000*25
-tri_delta_1 = tri_delta_1 + delta2t_noBias'*X;   %25*401
-tri_delta_2 = (tri_delta_2 + a2*delta3t)';  %10*26
+tri_delta_1 = delta2t_noBias'*X;         %25*401
+tri_delta_2 = (a2*delta3t)';             %10*26
 Theta1_grad = tri_delta_1 / m;
 Theta2_grad = tri_delta_2 / m;
 
